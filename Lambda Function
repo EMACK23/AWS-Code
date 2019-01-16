@@ -1,0 +1,12 @@
+def lambda_handler(event, context):
+    print("In lambda handler")
+    
+    resp = {
+        "statusCode": 200,
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+        },
+        "body": "About 4,000 people successfully climed Mt Everest, which stands at 29,029 feet high (the highest point on Earth). And about 200 people have died attempting the climb."
+    }
+    
+    return resp
