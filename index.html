@@ -1,0 +1,22 @@
+<html>
+<script>
+
+function myFunction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("my-demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "https://6yvvi4lgv3.execute-api.us-east-1.amazonaws.com/default/myServerlessWebpage", true);
+    xhttp.send();
+
+}
+
+</script>
+<body><div align="center"><br><br><br><br>
+<h1> <span id="my-demo">About how many people have climbed Mt Everest?</span></h1>
+<button onclick="myFunction()">Answer</button><br>
+<img src="https://s3.amazonaws.com/emack44/Mt+Everest.jpg"></div>
+</body>
+</html>
