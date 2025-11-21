@@ -1,0 +1,32 @@
+name: Markdown Word Count
+
+on:
+  push:
+    branches:
+      - '**'           # Any branch
+    paths:
+      - 'courses/**'   # Only run when Markdown content might change
+      - '**.md'        # Also catch .md files directly in root if any
+  pull_request:
+    paths:
+      - 'courses/**'
+      - '**.md'
+
+jobs:
+  count-words:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Markdown word counter
+        run: python scripts/count-markdown-words.py
+
+      - name: Append to Step Summary
+        run: |
+          python scripts/count-markdown-words.py >> $GITHUB_STEP_SUMMARY
